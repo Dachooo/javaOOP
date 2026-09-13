@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java Kurs — Učenički materijali</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button id="sidebarToggle" class="sidebar-toggle" aria-label="Prikaži/sakrij navigaciju">☰</button>
+
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h1>Java Kurs</h1>
+      <p class="sidebar-subtitle">Učenički materijali</p>
+    </div>
+
+    <div class="search-box">
+      <input type="search" id="searchInput" placeholder="Pretraži lekcije..." autocomplete="off">
+    </div>
+
+    <ul class="lesson-list" id="lessonList">
+      <li class="lesson-list__empty" id="lessonListEmpty">Učitavanje lekcija...</li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <article class="lesson-content" id="lessonContent">
+      <div class="welcome">
+        <h2>Dobrodošli</h2>
+        <p>Izaberite lekciju iz bočne trake da biste počeli sa učenjem.</p>
+      </div>
+    </article>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="materijali/lessons-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

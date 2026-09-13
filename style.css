@@ -1,0 +1,369 @@
+:root {
+  --bg: #f5f6fa;
+  --sidebar-bg: #1c2333;
+  --sidebar-bg-hover: #2a3349;
+  --sidebar-text: #cbd3e6;
+  --sidebar-text-dim: #8891ab;
+  --accent: #5b7cfa;
+  --accent-light: #eef1ff;
+  --content-bg: #ffffff;
+  --text: #1e2233;
+  --text-dim: #5c6478;
+  --border: #e3e6ef;
+  --code-bg: #1e1f2b;
+  --radius: 10px;
+  --shadow: 0 2px 10px rgba(20, 24, 40, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", "Inter", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-header {
+  padding: 24px 20px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.sidebar-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: var(--sidebar-text-dim);
+}
+
+.search-box {
+  padding: 16px 16px 8px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.search-box input::placeholder {
+  color: var(--sidebar-text-dim);
+}
+
+.search-box input:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lesson-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px 10px 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.lesson-list__empty {
+  padding: 16px 10px;
+  color: var(--sidebar-text-dim);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.lesson-item {
+  border-radius: 8px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  padding: 10px 12px;
+  transition: background 0.15s;
+  line-height: 1.35;
+}
+
+.lesson-item:hover {
+  background: var(--sidebar-bg-hover);
+}
+
+.lesson-item.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.lesson-item__title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: inherit;
+}
+
+.lesson-item__meta {
+  font-size: 0.75rem;
+  color: var(--sidebar-text-dim);
+  margin-top: 2px;
+}
+
+.lesson-item.active .lesson-item__meta {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Content ---------- */
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 40px clamp(20px, 5vw, 64px);
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.lesson-content {
+  background: var(--content-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid var(--border);
+}
+
+.welcome {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-dim);
+}
+
+.welcome h2 {
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+/* Markdown rendering */
+
+.lesson-content h1 {
+  font-size: 1.9rem;
+  margin-top: 0;
+  margin-bottom: 0.6em;
+  color: var(--text);
+  border-bottom: 2px solid var(--accent-light);
+  padding-bottom: 0.4em;
+}
+
+.lesson-content h2 {
+  font-size: 1.4rem;
+  margin-top: 1.8em;
+  color: var(--text);
+}
+
+.lesson-content h3 {
+  font-size: 1.15rem;
+  margin-top: 1.5em;
+  color: var(--text);
+}
+
+.lesson-content p, .lesson-content li {
+  line-height: 1.7;
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
+.lesson-content strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.lesson-content blockquote {
+  margin: 1em 0;
+  padding: 10px 18px;
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  color: var(--text-dim);
+}
+
+.lesson-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  font-size: 0.9rem;
+}
+
+.lesson-content th, .lesson-content td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.lesson-content th {
+  background: var(--accent-light);
+  color: var(--text);
+}
+
+.lesson-content code {
+  background: var(--accent-light);
+  color: #3d4ea8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: "Fira Code", Consolas, "Courier New", monospace;
+}
+
+.lesson-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+
+/* Code blocks (dark theme + copy button) */
+
+.code-block-wrapper {
+  position: relative;
+  margin: 1.2em 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--code-bg);
+  box-shadow: var(--shadow);
+}
+
+.code-block-wrapper pre {
+  margin: 0;
+  padding: 18px 16px;
+  overflow-x: auto;
+}
+
+.code-block-wrapper pre code {
+  /* Boja/pozadina moraju biti eksplicitne (ne "inherit"/"none") jer ovaj selektor
+     ima vecu specificnost od ".hljs" iz highlight.js teme i inace bi je iskljucio,
+     a moraju i da nadjacaju ".lesson-content code" (stil za inline kod u tekstu). */
+  background: transparent;
+  color: #abb2bf;
+  padding: 0;
+  font-size: 0.87rem;
+  font-family: "Fira Code", Consolas, "Courier New", monospace;
+  line-height: 1.55;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #d7dbe8;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.copy-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.copy-btn.copied {
+  background: #2fa66a;
+  color: #fff;
+  border-color: #2fa66a;
+}
+
+/* ---------- Sidebar toggle (mobile) ---------- */
+
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 20;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background: var(--sidebar-bg);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .app {
+    position: relative;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 15;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    width: 82vw;
+    max-width: 320px;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .content {
+    padding: 72px 16px 32px;
+  }
+
+  .lesson-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lesson-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .lesson-content h2 {
+    font-size: 1.2rem;
+  }
+}
