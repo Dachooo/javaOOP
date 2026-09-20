@@ -5,36 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Java Kurs — Učenički materijali</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<button id="sidebarToggle" class="sidebar-toggle" aria-label="Prikaži/sakrij navigaciju">☰</button>
+<button id="sidebarToggle" class="sidebar-toggle" aria-label="Prikaži/sakrij navigaciju" aria-expanded="false">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <div class="app">
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <h1>Java Kurs</h1>
-      <p class="sidebar-subtitle">Učenički materijali</p>
+      <div class="brand">
+        <span class="brand-mark">J</span>
+        <div class="brand-text">
+          <h1>Java Kurs</h1>
+          <p class="sidebar-subtitle">Učenički materijali</p>
+        </div>
+      </div>
     </div>
 
     <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
       <input type="search" id="searchInput" placeholder="Pretraži lekcije..." autocomplete="off">
+      <kbd class="search-kbd"><span>Ctrl</span>K</kbd>
     </div>
 
+    <div class="sidebar-section-label">Lekcije</div>
     <ul class="lesson-list" id="lessonList">
       <li class="lesson-list__empty" id="lessonListEmpty">Učitavanje lekcija...</li>
     </ul>
   </aside>
 
   <main class="content">
+    <header class="lesson-header" id="lessonHeader" hidden>
+      <nav class="breadcrumbs" id="breadcrumbs" aria-label="Breadcrumb"></nav>
+      <div class="lesson-header-top">
+        <span class="lesson-badge">JAVA</span>
+        <span class="lesson-meta-inline" id="lessonMetaInline"></span>
+      </div>
+      <h1 class="lesson-title" id="lessonTitle"></h1>
+    </header>
+
     <article class="lesson-content" id="lessonContent">
       <div class="welcome">
+        <div class="welcome-icon">☕</div>
         <h2>Dobrodošli</h2>
         <p>Izaberite lekciju iz bočne trake da biste počeli sa učenjem.</p>
       </div>
     </article>
+
+    <footer class="lesson-footer" id="lessonFooter" hidden>
+      <button class="lesson-nav-btn lesson-nav-btn--prev" id="prevLessonBtn" type="button">
+        <span class="lesson-nav-arrow">←</span>
+        <span class="lesson-nav-text">
+          <small>Prethodna lekcija</small>
+          <strong id="prevLessonTitle"></strong>
+        </span>
+      </button>
+      <button class="lesson-nav-btn lesson-nav-btn--next" id="nextLessonBtn" type="button">
+        <span class="lesson-nav-text lesson-nav-text--right">
+          <small>Sledeća lekcija</small>
+          <strong id="nextLessonTitle"></strong>
+        </span>
+        <span class="lesson-nav-arrow">→</span>
+      </button>
+    </footer>
   </main>
 </div>
 
